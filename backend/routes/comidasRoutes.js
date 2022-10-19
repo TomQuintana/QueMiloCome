@@ -1,9 +1,9 @@
 import express from 'express';
+import {registrarComida, consultarComidas} from '../controllers/comidaController.js'
 
 const router = express.Router();
 
-router.get('/registrar', (req, res) => {
-  res.send('Desde comidas')
-})
+router.post('/registrar', registrarComida)
+router.get('/consultar/:comidas', consultarComidas)
 
 export default router 
