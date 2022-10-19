@@ -3,22 +3,22 @@ import mongoose from 'mongoose'
 const comidasSchema = mongoose.Schema({
 
   nombrePlato: {
-    type: String
+    type: String,
     required: true,
-    trim: ture,
+    trim: true,
   },
   ingredientes: {
-    type: String
+    type: String,
     required: true,
-  trim: ture,
+    trim: true,
   },
   pasos: {
-    type: String
+    type: String,
     required: true,
-    trim: ture,
+    trim: true,
   },
 })
 
-const Comida = mongoose.model('Comida', comidasSchema);
+const Comida = mongoose.model('Comidas', comidasSchema);
 
-export defualt Comida;
+export default Comida;
