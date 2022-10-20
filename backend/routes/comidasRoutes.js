@@ -1,9 +1,10 @@
 import express from 'express';
-import {registrarComida, consultarComidas} from '../controllers/comidaController.js'
+import {registrarComida, consultarComidas, filtrarComidas} from '../controllers/comidaController.js'
 
 const router = express.Router();
 
 router.post('/registrar', registrarComida)
-router.get('/consultar/:comidas', consultarComidas)
+router.get('/platos-all/:comidas', consultarComidas)
+router.get('/plato-filter/:comidas', filtrarComidas)
 
 export default router 

@@ -16,12 +16,10 @@ const registrarComida = async (req, res) => {
 
 const consultarComidas = async (req,res) => {
 
-  console.log(req.params)
-
   const {comidas} = req.params
   
   const platos = await Comidas.find({comidas})
-  console.log(platos)
+  //console.log(platos)
   return res.json({platos})
   
   try {
@@ -33,7 +31,22 @@ const consultarComidas = async (req,res) => {
 
 
 const filtrarComidas = async (req, res) => {
-  return res.send('Desde filtrarComidas...')
+
+  const {ingrediente} = req.params;
+  const {secundario} = req.params;
+
+  const platos = await Comidas.find({})
+
+  let seleccion = [];
+
+  const filter = platos.forEach(plato => {
+    if (plato.ingredientes.primero === ingrediente && plato.ingredientes.segundo === secundario) {
+      seleccion = [...seleccion, plato]
+      return seleccion = [...seleccion, plato]
+    }
+  });
+
+  return res.json({seleccion})
 }
 
 
