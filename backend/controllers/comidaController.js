@@ -31,7 +31,14 @@ const consultarComidas = async (req,res) => {
   }
 }
 
+
+const filtrarComidas = async (req, res) => {
+  return res.send('Desde filtrarComidas...')
+}
+
+
 export {
   registrarComida,
-  consultarComidas
+  consultarComidas,
+  filtrarComidas
 }
