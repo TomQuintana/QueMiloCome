@@ -5,6 +5,6 @@ const router = express.Router();
 
 router.post('/registrar', registrarComida)
 router.get('/platos-all/:comidas', consultarComidas)
-router.get('/plato-filter/:comidas', filtrarComidas)
+router.get('/plato-filter/:ingrediente/:secundario', filtrarComidas)
 
 export default router 
