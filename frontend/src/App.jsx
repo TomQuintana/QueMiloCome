@@ -1,11 +1,17 @@
-import AuthLayout from "./components/AuthLayout";
-import Formulario from "./components/Formulario"
+import Header from "./components/Header"
+import Formaulario from './components/Formulario'
 
 function App() {
 
   return (
-    <h1>Desde la app</h1>
-  )
+    <div className="container mx-auto mt-5 ">
+      <Header />
+      <div className="mt-12">
+        <Formaulario />
+      </div>
+    </div>
+ )
 }
 
 export default App
+
