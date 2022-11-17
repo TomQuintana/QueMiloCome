@@ -1,11 +1,10 @@
 import React from 'react'
 import { useState } from 'react'
 
-//TODO: agregar htmlFor y states para leer los estados y pasarlos al back
+//TODO: usando props 
+const Formulario = ({plato, setPlato}) => {
 
-const Formulario = () => {
-
-  const [plato, setPlato] = useState('')
+  const [nombrePlato, setNombrePlato] = useState('')
   const [primerIngrediente, setPrimerIngrediente] = useState('')
   const [segundoIngrediente, setSegundoIngrediente] = useState('')
   const [pasos, setPasos] = useState('')
@@ -16,15 +15,30 @@ const Formulario = () => {
     e.preventDefault();
 
     // validacion
-    if ([plato, primerIngrediente, segundoIngrediente, pasos].includes('')) {
+    if ([nombrePlato, primerIngrediente, segundoIngrediente, pasos].includes('')) {
 
-      console.log('Hay campos vacios')
       setError(true)
-    } else {
-    console.log('Todo ok')
+    } 
+
+      setError(false)
+
+    // objeto de platos
+    const objetoPlato = {
+      nombrePlato, 
+      primerIngrediente, 
+      segundoIngrediente, 
+      pasos
     }
 
-    console.log('Enviando formulario')
+    console.log(objetoPlato)
+
+    setPlato([...plato, objetoPlato])
+
+    // reiniciar el form
+    setNombrePlato('')
+    setPrimerIngrediente('')
+    setSegundoIngrediente('')
+    setPasos('')
   }
 
   return (
@@ -42,12 +56,13 @@ const Formulario = () => {
 	<div className='mt-4'>
 	  <label htmlFor='plato' className='uppercase text-gray-700 block text-3xl font-black'>Nombre del Plato </label>
 	  <input
-	    id='plato'
+	    id='nombrePlato'
 	    className='border-2 rounded-md p-2 mt-2 pacleholder-gray-400 w-1/2'
 	    type='text'
-	    value={plato}
-	    onChange={e => setPlato(e.target.value)}
+	    value={nombrePlato}
+	    onChange={e => setNombrePlato(e.target.value)}
 	  />
+
 	</div>
 	<div className='mt-3'>
 	  <label htmlFor='primer-ingrediente' className='uppercase text-gray-700 block text-3xl font-black'>Primer Ingrediente </label>
