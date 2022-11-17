@@ -1,4 +1,5 @@
 import React from 'react'
+import Error from './Error'
 import { useState } from 'react'
 
 //TODO: usando props 
@@ -16,8 +17,10 @@ const Formulario = ({plato, setPlato}) => {
 
     // validacion
     if ([nombrePlato, primerIngrediente, segundoIngrediente, pasos].includes('')) {
+      console.log('Hay campos vacios')
 
       setError(true)
+      return;
     } 
 
       setError(false)
@@ -48,11 +51,8 @@ const Formulario = ({plato, setPlato}) => {
       <form
 	onSubmit={handleSubmit}
 	className='bg-white shadow-md  pb-3 mt-10'>
-	{error && (
-	  <div className='bg-red-800 text-white text-center p-3 uppercase font-bold mb-3 rounded-md'>
-	    <p>Si hay campos vacios</p>
-	  </div>
-	)}
+	{error && <Error>Todos los campos son obligatorios</Error>}
+	
 	<div className='mt-4'>
 	  <label htmlFor='plato' className='uppercase text-gray-700 block text-3xl font-black'>Nombre del Plato </label>
 	  <input
