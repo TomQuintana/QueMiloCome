@@ -1,9 +1,10 @@
 import React from 'react'
 import Error from './Error'
 import { useState } from 'react'
+import Success from './Success.jsx'
 
-//TODO: usando props 
 const Formulario = ({plato, setPlato}) => {
+
 
   const [nombrePlato, setNombrePlato] = useState('')
   const [primerIngrediente, setPrimerIngrediente] = useState('')
@@ -11,6 +12,8 @@ const Formulario = ({plato, setPlato}) => {
   const [pasos, setPasos] = useState('')
 
   const [error, setError] = useState(false)
+  const [success, setSuccess] = useState(false)
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -42,6 +45,15 @@ const Formulario = ({plato, setPlato}) => {
     setPrimerIngrediente('')
     setSegundoIngrediente('')
     setPasos('')
+
+    // muestro el carte de success
+    setSuccess(true)
+
+    // despues de 3 segundo saco success
+    setTimeout(() => {
+      setSuccess(false)
+    }, 3000);
+    
   }
 
   return (
@@ -53,6 +65,7 @@ const Formulario = ({plato, setPlato}) => {
 	className='bg-white shadow-md  pb-3 mt-10'>
 	{error && <Error>Todos los campos son obligatorios</Error>}
 	
+	{success && <Success>Gracias por agregar un nuevo Plato</Success>}
 	<div className='mt-4'>
 	  <label htmlFor='plato' className='uppercase text-gray-700 block text-3xl font-black'>Nombre del Plato </label>
 	  <input
