@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from 'axios'
 import Error from './Error'
 import { useState } from 'react'
 import Success from './Success.jsx'
@@ -15,7 +16,7 @@ const Formulario = ({plato, setPlato}) => {
   const [success, setSuccess] = useState(false)
 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // validacion
@@ -53,7 +54,17 @@ const Formulario = ({plato, setPlato}) => {
     setTimeout(() => {
       setSuccess(false)
     }, 3000);
-    
+
+
+    // le pego a la api para guarda el plato
+    try {
+      const url = 'http://localhost:4000/api/comidas/registrar'	
+      await axios.post(url, {nombrePlato, primerIngrediente, segundoIngrediente, pasos})
+      setAlerta({ msg: 'Creado correctamente, revisa tu email', error: false})
+    } catch (error) {
+      console.log(error)
+    }
+
   }
 
   return (
