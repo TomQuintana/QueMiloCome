@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+// le pego a la api para guarda el plato
 
 const comidasSchema = mongoose.Schema({
 
@@ -7,21 +8,19 @@ const comidasSchema = mongoose.Schema({
     required: true,
     trim: true,
   },
-  ingredientes: {
-    primero : {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    segundo: {
-      type: String,
-      required: false,
-      trim: true,
-    }
+  primerIngrediente: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  segundoIngrediente: {
+    type: String,
+    required: true,
+    trim: true,
   },
   pasos: {
     type: String,
-    required: true,
+    required: false,
     trim: true,
   },
 })
