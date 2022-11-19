@@ -31,19 +31,8 @@ const consultarComidas = async (req,res) => {
   const platos = await Comidas.find({comidas})
   //console.log(platos)
   return res.json({platos})
-
-  try {
-
-  } catch (error) {
-    
-    console.log(error)
-  }
-}
-
-const arrar = [];
-console.log(arrar.length)
-
   
+}
 
 
 const filtrarComidas = async (req, res) => {
@@ -78,8 +67,3 @@ export {
   filtrarComidas
 }
 
-const array = []
-console.log(array.length)
-
-
-()
