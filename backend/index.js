@@ -1,6 +1,5 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import cors from 'cors';
 import conectarDb from './config/db.js'
 import comidasRoutes from './routes/comidasRoutes.js'
 
@@ -22,9 +21,6 @@ const corsOptions = {
     }
   }
 }
-
-
-app.use(cors(corsOptions))
 
 
 conectarDb();
