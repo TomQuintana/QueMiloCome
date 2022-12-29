@@ -1,22 +1,24 @@
-import {useState} from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { useState } from 'react'
 import Header from "./components/Header"
 import Formaulario from './components/Formulario'
+import AuthLayout from './layout/AuthLayout'
+import Comidas from './components/Comidas'
 
 function App() {
 
   const [plato, setPlato] = useState([])
 
   return (
-    <div className="container mx-auto mt-5 ">
-      <Header />
-      <div className="mt-12">
-	<Formaulario 
-	  plato={plato}
-	  setPlato={setPlato}
-	/>
-      </div>
-    </div>
- )
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Header />}>
+          <Route index element={<Comidas />} />
+          <Route path='/formulario' element={<Formaulario />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  )
 }
 
 export default App
