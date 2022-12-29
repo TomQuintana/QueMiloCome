@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { useState } from 'react'
 import Header from "./components/Header"
 import Formaulario from './components/Formulario'
-import AuthLayout from './layout/AuthLayout'
 import Comidas from './components/Comidas'
 
 function App() {
