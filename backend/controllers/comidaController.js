@@ -60,10 +60,19 @@ const filtrarComidas = async (req, res) => {
   return res.json({seleccion})
 }
 
+const filtrarTipo = async (req, res) => {
+  const {tipo} = req.body;
+
+  //NOTE: el tipo tiene que ser exacto o no devuelve nada
+  const tipoComida = await Comidas.find({tipo})
+  return res.json({tipoComida})
+}
 
 export {
   registrarComida,
   consultarComidas,
-  filtrarComidas
+  filtrarComidas,
+  filtrarTipo
 }
 
+//TODO: comitear los cambios
