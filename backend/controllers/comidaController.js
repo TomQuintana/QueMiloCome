@@ -24,14 +24,36 @@ const registrarComida = async (req, res) => {
 }
 
 
-const consultarComidas = async (req,res) => {
+const buscarPlatos = async (req,res) => {
+  console.time('Time')
 
-  const {comidas} = req.params
-
-  const platos = await Comidas.find({comidas})
-  //console.log(platos)
-  return res.json({platos})
+  const peticion = req.body;
   
+  if (Object.entries(peticion).length === 0) {
+    console.log('No hay ningun ingrediente')
+    const platosAll = await Comidas.find({})
+
+    const error = new Error('No hay ningun ingrediente');
+  }
+
+  try {
+    const platos = await Comidas.find({})
+  
+    platos.forEach( platoSeleccionado => {
+      let seleccion = []
+  
+      if(platoSeleccionado.ingredientes.primero === peticion.ingrediente1 || platoSeleccionado.ingredientes.segundo === peticion.ingrediente2 ) {
+        seleccion.push(platoSeleccionado)
+        console.log(seleccion)
+        return res.json({seleccion})
+      }
+    })
+    
+  } catch (error) {
+    console.log(error)
+  }
+  
+  console.timeEnd('Time')
 }
 
 
@@ -70,7 +92,7 @@ const filtrarTipo = async (req, res) => {
 
 export {
   registrarComida,
-  consultarComidas,
+  buscarPlatos,
   filtrarComidas,
   filtrarTipo
 }
