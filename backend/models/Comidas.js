@@ -25,6 +25,11 @@ const comidasSchema = mongoose.Schema({
     required: false,
     trim: true,
   },
+  tipo: {
+    type: String,
+    required: true,
+    trim: true
+  }
 })
 
 const Comida = mongoose.model('Comidas', comidasSchema);
