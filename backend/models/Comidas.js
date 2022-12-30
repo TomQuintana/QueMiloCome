@@ -8,15 +8,17 @@ const comidasSchema = mongoose.Schema({
     required: true,
     trim: true,
   },
-  primerIngrediente: {
-    type: String,
-    required: true,
-    trim: true,
-  },
-  segundoIngrediente: {
-    type: String,
-    required: true,
-    trim: true,
+  ingredientes: {
+    primero: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    segundo: {
+      type: String,
+      required: true,
+      trim: true,
+    },
   },
   pasos: {
     type: String,
