@@ -90,11 +90,16 @@ const filtrarTipo = async (req, res) => {
   return res.json({tipoComida})
 }
 
+const comidasPorDia = () => {
+  
+}
+
 export {
   registrarComida,
   buscarPlatos,
   filtrarComidas,
-  filtrarTipo
+  filtrarTipo,
+  comidasPorDia
 }
 
 //TODO: comitear los cambios
